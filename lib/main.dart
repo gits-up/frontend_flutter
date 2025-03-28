@@ -1,4 +1,5 @@
 import 'package:app/biodata_page.dart';
+import 'package:app/firebase_options.dart';
 import 'package:app/subscriber flow/screens/home_page.dart';
 import 'package:app/signin_page.dart';
 import 'package:app/subscriber flow/widgets/my_navigation.dart';
@@ -11,10 +12,17 @@ import 'package:app/subscriber%20flow/widgets/home%20page%20flow/add_menu.dart';
 import 'package:app/subscriber%20flow/widgets/home%20page%20flow/confirm_subscription.dart';
 import 'package:app/subscriber%20flow/widgets/home%20page%20flow/create_subscription.dart';
 import 'package:app/subscriber%20flow/widgets/home%20page%20flow/pick_restraunt.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+Future<void> main() async {
+  //firebase initialization
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.white,
     statusBarIconBrightness: Brightness.dark,
